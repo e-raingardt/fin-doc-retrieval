@@ -1,0 +1,33 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "fin-doc-retrieval"
+version = "0.1.0"
+description = "Hard negative mining (BM25 & token-swap) for fine-tuning sentence-transformer retrieval models on FinQA intra-document passage retrieval"
+requires-python = ">=3.13"
+authors = [{ name = "Erik Raingardt" }]
+
+
+dependencies = [
+    "torch",
+    "sentence-transformers",
+    "scikit-learn",
+    "rank-bm25",
+    "numpy",
+    "tqdm",
+]
+
+[project.optional-dependencies]
+notebook = [
+    "jupyter",
+    "ipykernel",
+    "pandas",
+    "matplotlib",
+]
+
+[tool.setuptools]
+py-modules = []
+
+

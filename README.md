@@ -81,16 +81,25 @@ jupyter notebook analysis.ipynb
 
 To compare strategies, run step 3 multiple times — once per (strategy × seed) combination — then run the notebook.
 
+
 ## Requirements
 
-- Python 3.13
-- `sentence-transformers`
-- `rank_bm25`
-- `scikit-learn`
-- `torch`
-- `numpy`, `pandas`, `matplotlib`, `tqdm`
+- Python ≥ 3.13
+- Core: `torch`, `sentence-transformers`, `rank-bm25`, `scikit-learn`, `numpy`, `tqdm`
+- Notebook (optional): `pandas`, `matplotlib`, `jupyter`, `ipykernel`
 
-Install via `pip install -r requirements.txt`.
+## Installation
+
+```bash
+# 1. CUDA 12.6 build of PyTorch (install first so the CUDA wheels are used)
+pip install torch --index-url https://download.pytorch.org/whl/cu126
+
+# 2. Install the project and its remaining dependencies
+pip install -e .
+
+# Optional: include notebook/analysis dependencies
+pip install -e ".[notebook]"
+```
 
 ## Dataset
 
@@ -127,10 +136,3 @@ All experiments reported in this repository were conducted using:
 - FinQA official train/dev/test splits
 - `sentence-transformers/all-MiniLM-L12-v2`
 - Random seeds: 21, 42, 63
-
-Generated artifacts in `data/` can be reproduced by running:
-
-```bash
-python data_preparation.py
-python negative_mining.py
-```
